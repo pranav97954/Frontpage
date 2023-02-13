@@ -1,3 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.max-width{
+    padding: 0 205px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 /*Head Navbar*/
 .navhead {
     display: flex;
@@ -22,9 +31,6 @@
     align-items: center;
   }
 /* navbar styling */
-.max-width{
-    padding: 0 205px;
-}
 .navbar .max-width{
     display: flex;
     align-items: center;
@@ -37,26 +43,6 @@
     font-weight: 600;
     text-decoration: none;
 }
-.navbar .menu li{
-    list-style: none;
-    display: inline-block;
-}
-.navbar .menu li a{
-    text-decoration: none;
-    display: block;
-    color:#040404;
-    font-size: 20px;
-    font-weight: 500;
-    margin-left: 25px;
-    transition: color 0.3s ease;
-}
-.navbar .menu li a:hover{
-    color: #3c70ff;
-}
-.navbar.sticky .menu li a:hover{
-    color: #3c70ff;
-}
-
 
 /* Home styling */
 .home{
@@ -96,11 +82,9 @@
 }
 
 /*Blog Styling*/
-.blog{
-    height: 300px;
-    display: flex;
-    flex-direction: wrap;
-  }
+.blog .max-width .content{
+  display: flex; 
+}
   .blog .left{
     padding-top: 5px;
     width: 50%;
@@ -118,11 +102,9 @@
     }
   .blog .right{
     margin: auto;
-    
   }
   .blog .right .image-container {
-    position: relative;
-    
+    position: relative; 
   }
   .blog .right .image-container img{
     width: 500px;
@@ -142,7 +124,6 @@
     align-items: center;
     justify-content: center;
   }
-  
   .blog .right .play-button i {
     color: white;
     font-size: 40px;
@@ -150,21 +131,31 @@
 
 /* logo Styling */
 .logo-container {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .logo-item {
-    text-align: center;
-    width: 25%;
-  }
-  
-  .logo-item img {
-    height: 30px;
-    width: 50px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
 
+.logo-item {
+  text-align: center;
+  margin: 10px;
+}
+
+.logo-item img {
+  width: 50px;
+  height: 50px;
+}
+
+.logo-item p {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.logo-item p span {
+  font-weight: 100;
+}
 
 /*Services Section Styling*/
 .services{
@@ -231,7 +222,7 @@
     transform: scale(1.05);
 }
 .services .serv-content .card:hover{
-    width:250px;
+    
     height: 200px;
     border:solid 2px #3c70ff;
 }
@@ -257,36 +248,115 @@
 }
 
 /* footer styling */
-footer {
-    display: flex;
-    align-items: center;
+footer.contact{
     background-color:#3c70ff;
     background-image: url(foot.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
-    margin-bottom: 10px;
+    padding: 10px 0;
   }
-  .left-side{
-    
-    width: 45%;
-    align-content: center;
-  }
+  /* Style the left-side and right-side divs */
+.left-side, .right-side {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.left-side {
+  width: 60%;
+}
+
+.right-side {
+  width: 35%;
+}
   
-  .right-side input[type="email"] {
-    width: 400px;
-    padding: 10px;
-    margin-right: 10px;
-    font-size: 14px;
-    border: solid 2px white;
-    border-radius: 5px;
-    background: none;
-  }
+/* Style the input field and button */
+input[type="email"] {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: solid 2px white;
+  width: 100%;
+  background: none;
+}
+
+button[type="submit"] {
+  background-color: #3c70ff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: solid 2px white;
+  font-size: 16px;
+  cursor: pointer;
+}
   
-  .right-side button[type="submit"] {
-    padding: 10px;
-    background-color: #4c07ed;
-    color: #fffdfd;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Responsive */
+@media (max-width:900px){
+  .navhead{
+    padding: 0;
   }
-  
+  .max-width{
+    padding: 0 5px;
+    margin: 0 auto;
+}
+.home{
+  background-color: rgb(235, 239, 243);
+  background-image: none;
+  text-align: center;
+}
+.home .max-width{
+   width: 100%;
+}
+.logo-item img {
+  height: 20px;
+  width: 30px;
+}
+
+.content {
+  flex-direction: column;
+  align-items: center;
+}
+
+.left {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.right {
+  width: 70%;
+}
+
+
+
+.services .serv-content .card{
+    width: 100%;
+    margin: 20px;
+ }
+
+footer.contact#contact {
+    padding: 30px;
+  }
+  .left-side, .right-side {
+    display: block;
+    width: 100%;
+  }
+  input[type="email"]{
+    width: 100%;
+  }
+  button[type="submit"] {
+    width: 120px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .logo-container {
+    justify-content: center;
+  }
+
+  .logo-item {
+    flex-basis: 30%;
+    max-width: 30%;
+  }
+}

@@ -9,15 +9,76 @@
     <link rel="stylesheet" href="style.css">
   </head>
 <style>
-/* Menu btn styling*/
-.menu-btn{
-    color: #222;
-    font-size: 33px;
-    cursor: pointer;
-    display:none;
+  
+  .menu{
+  display:'block';
 }
-
-
+.navbar .menu{
+    list-style: none;
+    display: flex;
+}
+.navbar .menu li a{
+    text-decoration: none;
+    display: block;
+    color:#040404;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+.navbar .menu li a:hover{
+    color: #3c70ff;
+}
+.navbar.sticky .menu li a:hover{
+    color: #3c70ff;
+}
+.hamburger{
+  display: none;
+}
+.navbar .menu li a:hover{
+    color: #3c70ff;
+}
+.navbar.sticky .menu li a:hover{
+    color: #3c70ff;
+}
+@media only screen and (max-width:900px){
+    .hamburger{
+      display: block;
+      cursor: pointer;
+    }
+    .hamburger .line{
+      width: 30px;
+      height: 3px;
+      background: blue;
+      margin: 6px 0;
+    }
+    .navbar .menu{
+      height: 450px;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      transition: 0.2s;
+      overflow: hidden;
+    }
+    .navbar .menu{
+      display: block;
+      width: fit-content;
+      margin: 80px auto 0 auto;
+      text-align: center;
+      transition: 0.5s;
+      background-color: black;
+      opacity: 0;
+    }
+    .navbar .menu .active ul{
+      opacity: 1;
+    }
+    .navbar .menu ul li a{
+      margin-bottom: 12px;
+      color: aliceblue;
+    }
+}
 </style>
 <body>
   <nav class="navhead">
@@ -36,20 +97,21 @@
   <nav class="navbar">
     <div class="max-width">
         <div class="logo"><a href="#"><i class="bi bi-app"></i>Bisnes</a></div>
-        <ul class="menu">
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <ul class="menu"> 
            <li><a href="#home" class="menu-btn">Home</a></li>
            <li><a href="#about" class="menu-btn">About</a></li>
+           <li><a href="#blog" class="menu-btn">Blogs</a></li>
+           <li><a href="#logo" class="menu-btn">Logo</a></li>
            <li><a href="#services" class="menu-btn">Services</a></li>
-           <li><a href="#skills" class="menu-btn">Skills</a></li>
-           <li><a href="#teams" class="menu-btn">Teams</a></li>
            <li><a href="#contact" class="menu-btn">Contact</a></li>
         </ul>
-        <div class="menu-btn">
-            <i class="bi bi-list"></i>
-        </div>
-    </div>
+      </div>
   </nav>
-
   <!--Home-->
   <section class="home" id="home">
     <div class="max-width">
@@ -66,24 +128,28 @@
 
 
 <!--Blog-->
- <section class="blog max-width" id="blog">
-   <div class="left">
-       <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, fugit?</h1>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis nesciunt repellat minima non assumenda, maiores explicabo. Temporibus quaerat dicta repudiandae officia ullam quo odio nesciunt?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus, incidunt. Recusandae mollitia laudantium ea, unde at iste similique architecto! Sit.</p>
-       <button type="submit">Know More</button>
-    </div>
-   <div class="right">
-    <div class="image-container">
-      <img src="video.png" alt="Your Image">
-      <div class="play-button">
-        <i class="bi bi-play-circle-fill"></i>
+ <section class="blog" id="blog">
+  <div class="max-width">
+    <div class="content">
+      <div class="left">
+          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, fugit?</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis nesciunt repellat minima non assumenda, maiores explicabo. Temporibus quaerat dicta repudiandae officia ullam quo odio nesciunt?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus, incidunt. Recusandae mollitia laudantium ea, unde at iste similique architecto! Sit.</p>
+          <button type="submit">Know More</button>
+       </div>
+      <div class="right">
+       <div class="image-container">
+         <img src="video.png" alt="Your Image">
+         <div class="play-button">
+           <i class="bi bi-play-circle-fill"></i>
+         </div>
+       </div>
       </div>
     </div>
-   </div>
+  </div>
  </section>
 
 <!--Logo Section-->
-<div class="logo-container max-width">
+<div class="logo-container max-width" id="logo">
   <div class="logo-item">
     <img src="logo1.png" alt="Logo 1">
     <p>Construct<span>ion</span></p>
@@ -137,7 +203,8 @@
             <a href="#contact">All Services</a>
         </div>
     </section>
-    <footer class="max-width">
+    <footer class="contact" id="contact">
+      <div class="max-width">
         <div class="left-side">
           <h1>Lorem ipsum dolor sit amet consectetur,adipisicing elit. Ullam, a!</h1>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis iure deleniti quas.</p>
@@ -150,7 +217,14 @@
           <br>
           <button type="submit">Subscribe</button>
         </div>
+      </div>
     </footer>
-      
+    <script>
+      hamburger = document.querySelector(".hamburger");
+      hamburger.onclick = function(){
+        navBar = document.querySelector(".menu");
+        navBar.classList.toggle("active");
+      }
+    </script>
 </body>
 </html>
